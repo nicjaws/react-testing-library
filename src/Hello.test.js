@@ -1,10 +1,11 @@
 import React from 'react';
 import Hello from './Hello';
-import {render} from '@testing-library/react';
+import {getByTestId, render} from '@testing-library/react';
 
 test("Component should display Hello text", () => {
-  const comp = render(<Hello />);
-  //comp.debug();
-  const helloText = comp.getByText("Hello");
+  const { getByTestId, debug } = render(<Hello />);
+  debug();
+  let helloText = getByTestId("my-heading");
   expect(helloText).toBeTruthy();
+  expect(helloText.tagName).toBe("H1");
 });
